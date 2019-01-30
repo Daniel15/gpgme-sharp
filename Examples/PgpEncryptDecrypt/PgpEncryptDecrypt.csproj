@@ -127,6 +127,10 @@
       <Project>{5523357F-F3CA-4E25-B6EC-30EE3F5D769D}</Project>
       <Name>gpgme-sharp</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\GPGME.Native.Shared\GPGME.Native.Shared.csproj">
+      <Project>{c18682b5-3246-4ed4-9527-3f51e89a7235}</Project>
+      <Name>GPGME.Native.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
