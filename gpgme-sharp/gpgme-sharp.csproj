@@ -2,14 +2,24 @@
 
   <PropertyGroup>
     <TargetFrameworks>net40;netstandard2.0</TargetFrameworks>
-    <Copyright>Copyright © 2009-2013 Daniel Mueller</Copyright>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <FileVersion>1.1.0.0</FileVersion>
-    <Version>1.1.0</Version>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <AssemblyName>gpgme-sharp</AssemblyName>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>2.0.0</Version>
+    <Authors>Daniel Mueller, William Gathoye, Daniel Lo Nigro</Authors>
+    <Company>gpgme-sharp contributors</Company>
+    <PackageTags>gpg gnupg pgp gpgme-sharp security</PackageTags>
+    <Description>A C# (c-sharp) wrapper around libgpgme.</Description>
+    <PackageReleaseNotes>Update to support .NET Standard 2.0</PackageReleaseNotes>
+    <PackageLicenseUrl>https://d.sb/gpgme#license</PackageLicenseUrl>
+    <PackageProjectUrl>https://d.sb/gpgme</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Properties\" />
+    <PackageReference Include="ILRepack.MSBuild.Task" Version="2.0.3">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
@@ -19,9 +29,30 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GPGME.Native.Shared\GPGME.Native.Shared.csproj" />
-    <ProjectReference Include="..\GPGME.Native.Unix\GPGME.Native.Unix.csproj" />
-    <ProjectReference Include="..\GPGME.Native.Win32\GPGME.Native.Win32.csproj" />
+    <ProjectReference Include="..\GPGME.Native.Shared\GPGME.Native.Shared.csproj" PrivateAssets="all" />
+    <ProjectReference Include="..\GPGME.Native.Unix\GPGME.Native.Unix.csproj" PrivateAssets="all" />
+    <ProjectReference Include="..\GPGME.Native.Win32\GPGME.Native.Win32.csproj" PrivateAssets="all" />
   </ItemGroup>
 
+  <Target Name="ILRepack" AfterTargets="Build">
+
+    <PropertyGroup>
+      <WorkingDirectory>$(MSBuildThisFileDirectory)bin\$(Configuration)\$(TargetFramework)</WorkingDirectory>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <InputAssemblies Include="$(MSBuildThisFileDirectory)bin\$(Configuration)\$(TargetFramework)\GPGME.Native.Shared.dll" />
+      <InputAssemblies Include="$(MSBuildThisFileDirectory)bin\$(Configuration)\$(TargetFramework)\GPGME.Native.Unix.dll" />
+      <InputAssemblies Include="$(MSBuildThisFileDirectory)bin\$(Configuration)\$(TargetFramework)\GPGME.Native.Win32.dll" />
+    </ItemGroup>
+    <ILRepack
+      Condition="'$(TargetFramework)' != ''"
+      OutputType="$(OutputType)"
+      MainAssembly="$(AssemblyName).dll"
+      OutputAssembly="$(AssemblyName).dll"
+      InputAssemblies="@(InputAssemblies)"
+      WorkingDirectory="$(WorkingDirectory)"
+      Internalize="false"
+    />
+  </Target>
 </Project>
