@@ -10,7 +10,7 @@
     <Authors>Daniel Mueller, William Gathoye, Daniel Lo Nigro</Authors>
     <Company>gpgme-sharp contributors</Company>
     <PackageTags>gpg gnupg pgp gpgme-sharp security</PackageTags>
-    <Description>A C# (c-sharp) wrapper around libgpgme.</Description>
+    <Description>A C# wrapper around libgpgme. See examples in the Git repository (https://github.com/Daniel15/gpgme-sharp/tree/master/Examples) to learn how to use this library.</Description>
     <PackageReleaseNotes>Update to support .NET Standard 2.0</PackageReleaseNotes>
     <PackageLicenseUrl>https://d.sb/gpgme#license</PackageLicenseUrl>
     <PackageProjectUrl>https://d.sb/gpgme</PackageProjectUrl>
