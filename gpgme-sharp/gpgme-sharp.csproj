@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <TargetFrameworks>net40;netstandard2.0</TargetFrameworks>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <FileVersion>2.0.0.0</FileVersion>
+    <AssemblyVersion>2.0.1</AssemblyVersion>
+    <FileVersion>2.0.1</FileVersion>
     <AssemblyName>gpgme-sharp</AssemblyName>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
-    <Version>2.0.0</Version>
+    <Version>2.0.1</Version>
     <Authors>Daniel Mueller, William Gathoye, Daniel Lo Nigro</Authors>
     <Company>gpgme-sharp contributors</Company>
     <PackageTags>gpg gnupg pgp gpgme-sharp security</PackageTags>
