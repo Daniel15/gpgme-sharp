@@ -5,7 +5,7 @@
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <FileVersion>2.0.0.0</FileVersion>
     <AssemblyName>gpgme-sharp</AssemblyName>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
     <Version>2.0.0</Version>
     <Authors>Daniel Mueller, William Gathoye, Daniel Lo Nigro</Authors>
     <Company>gpgme-sharp contributors</Company>
@@ -34,7 +34,7 @@
     <ProjectReference Include="..\GPGME.Native.Win32\GPGME.Native.Win32.csproj" PrivateAssets="all" />
   </ItemGroup>
 
-  <Target Name="ILRepack" AfterTargets="Build">
+  <Target Name="ILRepack" AfterTargets="Build" Condition="'$(Configuration)' == 'Release'">
 
     <PropertyGroup>
       <WorkingDirectory>$(MSBuildThisFileDirectory)bin\$(Configuration)\$(TargetFramework)</WorkingDirectory>

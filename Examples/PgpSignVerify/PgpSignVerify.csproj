@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\gpgme-sharp\gpgme-sharp.csproj" />
+    <ProjectReference Include="..\..\GPGME.Native.Shared\GPGME.Native.Shared.csproj" Condition="'$(Configuration)' != 'Release'" />
   </ItemGroup>
 
 </Project>
